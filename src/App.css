@@ -10,3 +10,6 @@
 .books-list li img {
   margin-right: 20px;
 }
+.list-group {
+  cursor: pointer;
+}

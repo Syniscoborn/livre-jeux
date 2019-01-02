@@ -4,7 +4,7 @@ import uniqid from "uniqid";
 
 const Filters = props => {
   return (
-    <ul className="list-group" style={{ cursor: "pointer" }}>
+    <ul className="list-group">
       {Object.values(props.filters).map((filter, index) => {
         return (
           <Filter
