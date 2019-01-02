@@ -1,0 +1,12 @@
+.selectedListItem {
+  background-color: aquamarine;
+}
+.unselectedListItem {
+  background-color: none;
+}
+.books-list {
+  list-style: none;
+}
+.books-list li img {
+  margin-right: 20px;
+}
