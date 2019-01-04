@@ -4,23 +4,25 @@ class Filter extends React.Component {
   constructor() {
     super();
     this.state = {
-      blue: false
+      active: false
     };
   }
 
   handleClick = () => {
     this.props.selectedListItem(this.props.filter);
+    if (this.state.active) {
+      this.setState({ active: false })
+    } else {
+      this.setState({ active: true })
+    }
   };
 
   render() {
-    let btnChangeColor = this.props.activeFilters
-      ? "selectedListItem"
-      : "unselectedListItem";
 
     return [
       <li
         key={this.props.index}
-        className={"list-group-item " + btnChangeColor}
+        className={"list-group-item " + (this.state.active ? 'selectedListItem' : 'unselectedListItem')}
         onClick={e => this.handleClick()}
       >
         {this.props.filter}
