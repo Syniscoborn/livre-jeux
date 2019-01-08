@@ -2,14 +2,14 @@ import React from "react";
 
 class Book extends React.Component {
   render() {
-    const { book } = this.props;
+    const { filteredBook } = this.props;
 
     return (
       <li>
         <img
-          src={book.url}
+          src={filteredBook.url}
           className="rounded float-left"
-          alt={book.category}
+          alt={filteredBook.category}
         />
       </li>
     );

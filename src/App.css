@@ -1,7 +1,7 @@
-.selectedListItem {
+.selectedFilter {
   background-color: aquamarine;
 }
-.unselectedListItem {
+.unselectedFilter {
   background-color: none;
 }
 .books-list {

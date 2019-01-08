@@ -1,10 +1,9 @@
 import React from "react";
 import "./App.css";
-import Filters from "./Filters";
+import Filter from "./Filter";
 import Book from "./Book";
 import config from "./config";
 import firebase from "firebase";
-import uniqid from "uniqid";
 
 class App extends React.Component {
   constructor() {
@@ -13,10 +12,9 @@ class App extends React.Component {
     this.state = {
       books: "",
       filters: "",
-      activeFilters: false,
       filteredBooks: ""
     };
-    this.selectedListItem = this.selectedListItem.bind(this);
+    this.selectedFilter = this.selectedFilter.bind(this);
   }
 
   componentDidMount() {
@@ -36,20 +34,18 @@ class App extends React.Component {
     });
   }
 
-  selectedListItem = filter => {
-    const books = this.state.books;
-    const newBooksList = books.filter(book => {
+  selectedFilter = filter => {
+    const books = this.state.books.filter(book => {
       return book.category === filter || book.age === filter;
     });
 
     this.setState({
-      filteredBooks: newBooksList,
-      activeFilters: filter
+      filteredBooks: books
     });
   };
 
   render() {
-    const { filters, filteredBooks } = this.state;
+    const { filteredBooks } = this.state;
 
     return (
       <div className="app">
@@ -58,15 +54,20 @@ class App extends React.Component {
         </div>
         <div className="row">
           <div className="col-md-2">
-            <Filters
-              filters={filters}
-              selectedListItem={this.selectedListItem}
-            />
+            {Object.values(this.state.filters).map((filter, key) => {
+              return (
+                <Filter
+                  key={key}
+                  filter={filter}
+                  selectedFilter={this.selectedFilter}
+                />
+              );
+            })}
           </div>
           <div className="col-md-10">
             <ul className="books-list">
-              {Object.keys(filteredBooks).map((key, index) => {
-                return <Book key={index} book={filteredBooks[key]} />;
+              {Object.keys(filteredBooks).map(key => {
+                return <Book key={key} filteredBook={filteredBooks[key]} />;
               })}
             </ul>
           </div>

@@ -9,7 +9,7 @@ class Filter extends React.Component {
   }
 
   handleClick = () => {
-    this.props.selectedListItem(this.props.filter);
+    this.props.selectedFilter(this.props.filter);
     if (this.state.active) {
       this.setState({ active: false })
     } else {
@@ -22,7 +22,7 @@ class Filter extends React.Component {
     return [
       <li
         key={this.props.index}
-        className={"list-group-item " + (this.state.active ? 'selectedListItem' : 'unselectedListItem')}
+        className={"list-group-item " + (this.state.active ? 'selectedFilter' : 'unselectedFilter')}
         onClick={e => this.handleClick()}
       >
         {this.props.filter}
